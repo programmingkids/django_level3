@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title%}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4 p-2 bg-primary text-white">{{ title }}</h2>
+    
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+
+    {% include 'flash.html' %}
+    
+    <div class="mb-3">
+        <a href="{% url 'game:user_create' %}" class="btn btn-primary">新規作成</a>
+    </div>
+    
+    {% include 'pagination.html' %}
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>メール</th>
+                <th>年齢</th>
+                <th>趣味</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in object_list %}
+            <tr>
+                <td>{{o.id}}</td>
+                <td>{{o.name}}</td>
+                <td>{{o.email}}</td>
+                <td>{{o.age}}</td>
+                <td>{{o.hobby}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include 'pagination.html' %}
+    
+</div>
+{% endblock %}

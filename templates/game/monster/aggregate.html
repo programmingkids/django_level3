@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title%}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4 p-2 bg-primary text-white">{{ title }}</h2>
+    
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+    
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>{{ object_list }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

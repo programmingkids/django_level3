@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'school',
+    'game',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,3 +136,14 @@ STATIC_URL = '/static/'
 
 # 共通スタティックファイルディレクトリ設定
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# フラッシュメッセージ設定
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert alert-secondary',
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+    messages.WARNING: 'alert alert-warning',
+    messages.ERROR: 'alert alert-danger',
+}
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

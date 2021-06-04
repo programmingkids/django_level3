@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title%}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4 p-2 bg-primary text-white">{{ title }}</h2>
+    
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+    
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>攻撃力</th>
+                <th>キャラクタ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in object_list %}
+            <tr>
+                <td>{{o.id}}</td>
+                <td>{{o.name}}</td>
+                <td>{{o.attack}}</td>
+                <td>
+                    {% if o.character.count > 0 %}
+                    <table class="table">
+                        <tr class="bg-info text-white">
+                            <th>名前</th>
+                            <th>年齢</th>
+                        </tr>
+                        {% for c in o.character.all %}
+                        <tr>
+                            <td>{{ c.name }}</td>
+                            <td>{{ c.age }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
